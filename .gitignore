@@ -1,0 +1,32 @@
+
+__pycache__/
+.idea
+.DS_Store
+
+
+out/
+
+
+# wandb
+wandb/
+
+#saved binaries
+checkpoints/
+
+#mujoco log files
+MUJOCO_LOG.TXT
+
+#previous scripts
+scripts/
+videos/
+visuals/
+runs/
+.ipynb_checkpoints/
+
+#cmake
+CmakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+libtorch/
+*.o
