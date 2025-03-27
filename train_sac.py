@@ -220,8 +220,8 @@ poetry run pip install "stable_baselines3==2.0.0a1"
         train(args, envs, actor, qf1, qf2, qf1_target, qf2_target,
                       q_optimizer, actor_optimizer, a_optimizer, rb, writer, device, alpha, log_alpha, target_entropy)
 
-    elif args.trainer == 'delayed_buffer_hiddens':
-        from trainers.trainers_sac import train_delayed_buffer_hiddens
+    elif args.trainer == 'delayed':
+        from trainers.trainers_sac import train_delayed
         rb = ReplayMemory(
             args.buffer_size,
             np.array(envs.single_observation_space.shape).prod(),
@@ -230,23 +230,9 @@ poetry run pip install "stable_baselines3==2.0.0a1"
             device=device,
         )
         print('starting delayed SAC buffer training loop')
-        train_delayed_buffer_hiddens(args, envs, actor, qf1, qf2, qf1_target, qf2_target,
-                                                     q_optimizer, actor_optimizer, a_optimizer,
-                                                     rb, writer, device, alpha, log_alpha, target_entropy)
-
-    elif args.trainer == 'delayed_buffer_efficient':
-        from trainers.trainers_sac import train_delayed_efficient
-        rb = ReplayMemory(
-            args.buffer_size,
-            np.array(envs.single_observation_space.shape).prod(),
-            np.array(envs.single_action_space.shape).prod(),
-            envs.single_observation_space.dtype,
-            device=device,
-        )
-        print('starting delayed SAC buffer training loop')
-        train_delayed_efficient(args, envs, actor, qf1, qf2, qf1_target, qf2_target,
-                                         q_optimizer, actor_optimizer, a_optimizer,
-                                         rb, writer, device, alpha, log_alpha, target_entropy)
+        train_delayed(args, envs, actor, qf1, qf2, qf1_target, qf2_target,
+                      q_optimizer, actor_optimizer, a_optimizer,
+                      rb, writer, device, alpha, log_alpha, target_entropy)
 
     else:
         assert 0, 'Unknown trainer'
