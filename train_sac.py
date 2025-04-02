@@ -168,7 +168,6 @@ poetry run pip install "stable_baselines3==2.0.0a1"
     assert isinstance(envs.single_action_space, gym.spaces.Box), "only continuous action space is supported"
     obs_dim = np.array(envs.single_observation_space.shape).prod()
     args.initial_obs_size = int((obs_dim - args.num_last_actions * np.array(envs.single_action_space.shape).prod()) / args.history_states)
-    print('initial_obs_size', args.initial_obs_size)
 
     max_action = float(envs.single_action_space.high[0])
 
@@ -187,7 +186,6 @@ poetry run pip install "stable_baselines3==2.0.0a1"
     qf1_target.load_state_dict(qf1.state_dict())
     qf2_target.load_state_dict(qf2.state_dict())
     q_optimizer = optim.Adam(list(qf1.parameters()) + list(qf2.parameters()), lr=args.q_lr, weight_decay=args.wd)
-    print('actor.parameters().shape', [p.shape for p in actor.parameters()])
     actor_optimizer = optim.Adam(list(actor.parameters()), lr=args.policy_lr)
 
     # Automatic entropy tuning
