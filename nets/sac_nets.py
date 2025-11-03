@@ -104,13 +104,9 @@ class ActorSlow(Actor):
         log_prob = normal.log_prob(x_t)
         # Enforcing Action Bound
         mean = torch.tanh(mean) * self.action_scale + self.action_bias
-        if self.args.trainer == 'delayed_sampled':
-            log_prob = log_prob.sum(1, keepdim=True)
-            return action, log_prob, torch.exp(log_prob), hidden_activations
-        else:
-            log_prob -= torch.log(self.action_scale * (1 - y_t.pow(2)) + 1e-6)
-            log_prob = log_prob.sum(1, keepdim=True)
-            return action, log_prob, mean, hidden_activations
+        log_prob -= torch.log(self.action_scale * (1 - y_t.pow(2)) + 1e-6)
+        log_prob = log_prob.sum(1, keepdim=True)
+        return action, log_prob, mean, hidden_activations
 
     def init_activation(self, x):
         if self.args.get_instant_activations:

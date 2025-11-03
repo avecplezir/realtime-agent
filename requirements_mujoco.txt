@@ -1,0 +1,12 @@
+gymnasium==0.29.1
+mujoco==3.1.1
+numpy==1.24.4
+torch==2.1.2
+stable-baselines3==2.2.1
+tyro==0.6.0
+tensorboard==2.15.1
+
+# Optional: video capture and offscreen rendering used by RecordVideo
+imageio==2.19.3
+imageio-ffmpeg==0.4.9
+glfw==2.5.3

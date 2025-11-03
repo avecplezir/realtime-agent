@@ -1,0 +1,13 @@
+gymnasium==0.28.1
+MinAtar==1.0.15
+numpy==1.26.4
+torch==2.0.1
+stable-baselines3==2.2.1
+tyro==0.7.3
+tensorboard==2.9.1
+
+# Optional: video capture and rendering
+imageio==2.34.0
+imageio-ffmpeg==0.4.9
+pygame==2.1.3
+

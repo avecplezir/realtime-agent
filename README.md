@@ -20,7 +20,7 @@ export MUJOCO_PATH=/home/$USER/.mujoco/mujoco-2.3.3/
 Install dependencies with:
 
 ```
-pip install -r requirements.txt
+pip install -r requirements_mujoco.txt
 ```
 
 # Tranning Mujoco
@@ -51,6 +51,12 @@ To train it with different neuron execution times change the `frame_skip` parame
 For MinAtar and MiniGrid the code was tested with python3.9.
 
 Install MinAtar using the instructions [here](https://github.com/kenjyoung/MinAtar).
+
+Install dependencies with:
+
+```
+pip install -r requirements_minatar.txt
+```
 
 For training Vanilla PPO without delay (heavily based on [cleanRL](https://github.com/vwxyzjn/cleanrl/blob/master/cleanrl/ppo_atari.py)), run: 
 ```
